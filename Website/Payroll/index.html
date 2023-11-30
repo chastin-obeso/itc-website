@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>SIMPLE PAYROLL CALCULATOR</title>
+             <style>
+               #divmain{
+                    display:grid;
+                    grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
+                    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+                    width: 100%;
+                    margin: 10 auto;
+                    border: 10px solid var(--clr-dark);
+                }
+
+                #heading{
+                    height: 80px;
+                    border-style: solid;
+                    border-width: 1px;  
+                    background-color:rgb(250, 250, 242);
+                    grid-row-start:1 ;
+                    grid-row-end:1 ;
+                    grid-column-start: 4;
+                    grid-column-end: 11;  
+                    text-align:center; 
+                }
+
+                #divinput{
+                    height: 280px;
+                    margin: 1 auto;
+                    border-style: solid;
+                    border-width: 1px;  
+                    background-color:rgb(250, 250, 242);
+                    grid-row-start:2 ;
+                    grid-row-end:5 ;
+                    grid-column-start: 2;
+                    grid-column-end: 6;  
+                    text-align:center;
+                }
+
+                #divinputelements{
+                    padding: 5px;
+                    position: relative;
+                    float: left;
+                }
+               
+
+                #divtable{
+                    width: 1050px;
+                    padding: 10px;
+                    margin: 1 auto;
+                    border-style: solid;
+                    border-width: 1px;  
+                    background-color:rgb(250, 250, 242);
+                    grid-row-start:5 ;
+                    grid-row-end:8 ;
+                    grid-column-start: 2;
+                    grid-column-end: 12;  
+                    text-align:center;
+                }
+
+                #remove_employee{
+                    height: 100px;
+                    width: 450px;
+                    padding: 10px;
+                    margin: 1 auto;
+                    border-style: solid;
+                    border-width: 1px;  
+                    background-color:rgb(250, 250, 242);
+                    grid-row-start:3 ;
+                    grid-row-end:4 ;
+                    grid-column-start: 8;
+                    grid-column-end: 13;  
+                    text-align:left;
+                }
+
+            </style>
+    </head>
+
+    <body onload = "init_table()">
+        <div id="divmain">
+            <div id="heading"><h1>Simple Payroll Calculator</h1></div>
+            
+            <div id="remove_employee">
+                <h2 style="text-align: center;">Remove Employee from List</h2>
+                <input id="delitem" style="margin-left: 85px;"></input>
+                <button onclick="deleteitem()" style="width: 100px;">Submit</button>
+            </div>
+
+            <div id="divinput">
+                <h2>Input</h2>
+
+                <div id = "divinputelements">
+                <label for="name" style="margin-right: 10px; margin-left: 35px;">Employee Name:</label>
+                <input id = "name" type="search" size="20px"></input>
+                <br><br>
+                <label for="days_worked" style="margin-left: 55px; margin-right: 10px;">Days Worked:</label>
+                <input id = "days_worked" type="number" size="20px"></input>
+                <br><br>
+                <label for="daily_rate" style="margin-left: 70px;">Daily Rate: P</label>
+                <input id = "daily_rate" type="number" size="20px"></input>
+                <br><br>
+                <label for="deduction_amount" style="margin-left: 15px;">Deduction Amount: P</label>
+                <input id = "deduction_amount" type="number" size="20px"></input>
+                
+                </div>
+
+                <br><br><br><br><br><br><br><br><br>
+                <button type="submit" onclick="addtotable()" style="margin-right: 20px; width: 100px;">Submit</button>
+                <button onclick="clearTable()" style="width: 100px;">Clear</button>
+            </div>
+
+            <div id="divtable">
+                <table id = "table" style=" margin: auto; width: 1000px; height: 30px;">
+                    <thead>
+                        <tr style="background-color: rgb(211, 226, 255);">
+                            <th>Employee No.</th>
+                            <th>Days Worked</th>
+                            <th>Days Worked </th>
+                            <th>Daily Rate</th>
+                            <th>Gross Pay</th>
+                            <th>Deduction Amount</th>
+                            <th>Net Pay</th>
+                        </tr>
+                        <tr style="background-color: rgb(255, 255, 255);">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <h5>submitted by Chastin Obeso of CS 1-A</h5>
+        
+        <script>
+            table = [];
+            function addtotable(){
+
+         
+
+                var tableitem = {
+
+                    "name": "1",
+
+                    "days_worked": 0,
+
+                    "daily_rate": 1,
+
+                    "deduction_amount" : 0,
+
+                    "gross_pay" : function gross_pay(){
+
+                        return Math.round(this.days_worked*this.daily_rate*100)/100;  
+
+                    },
+
+                    "net_pay" : function net_pay(){
+                        return Math.round((this.gross_pay() - this.deduction_amount)*100)/100;
+                     
+                    }
+
+                };
+
+
+
+             tableitem.name=document.getElementById("name").value;
+
+             tableitem.days_worked=document.getElementById("days_worked").value;
+
+             tableitem.daily_rate=document.getElementById("daily_rate").value;
+
+             tableitem.deduction_amount=document.getElementById("deduction_amount").value;
+
+
+
+             console.log(tableitem.name);
+
+             console.log(tableitem.days_worked);
+
+             console.log(tableitem.daily_rate);
+
+             console.log(tableitem.deduction_amount);
+
+
+
+
+
+              table.push(tableitem);
+
+             //cart[cart.length]=cartitem;
+
+
+
+             console.log(table.length);
+
+             /*document.getElementById("items").value=table.length;*/
+
+
+
+             showtable();
+
+
+
+            }
+            function showtable(){
+
+
+
+                var i,l,tabletext,totalamount,ln;
+
+                var theader,tbody,tb,tfooter;
+
+
+
+
+
+                // Generate table header;
+
+                theader ="<thead>";
+
+                theader+="<tr>";
+
+                theader+="<th>Employee No.</th>";
+
+                theader+='<th>Employee Name</th>';
+
+                theader+="<th>Days Worked</th>";
+
+                theader+='<th>Daily Rate</th>';
+
+                theader+="<th>Gross Pay</th>";
+
+                theader+="<th>Deduction Amount</th>";
+
+                theader+="<th>Net Pay</th>";
+
+                theader+="</tr>";
+
+                theader+="</thead>";
+
+
+
+                // Generate Table Body
+
+                l = table.length;
+
+
+
+
+
+                //  for (i=0,totalamount=0,carttext="",tbody='<tbody id="cart">';i<l;i++){
+
+                for (i=0,totalamount=0,carttext="",tbody='';i<l;i++){
+
+                        ln=i+1;
+
+                        tbody += "<tr>"
+
+                        
+
+                        +'<td>'+ln+' </td>'
+
+                        +'<td>'+table[i].name+' </td>'
+
+                        +'<td>'+table[i].days_worked+'</td>'
+
+                        +'<td>'+table[i].daily_rate+'</td>'
+
+                        +'<td>'+table[i].gross_pay()+'</td>'  
+
+                        +'<td>'+table[i].deduction_amount+'</td>' 
+                        
+                        +'<td>'+table[i].net_pay()+'</td>'
+
+                        +"</tr>";
+
+
+
+
+
+                }
+
+
+
+                // tbody += "</tbody>";
+
+
+
+                // Generate table footer;
+
+                /*tfooter ="<tfoot>";
+
+                tfooter+="<tr>";
+
+                tfooter+='<th style="text-align:left">'+table.length+'</th>';
+
+                tfooter+='<th style="text-align:left">Items</th>';
+
+                tfooter+='<th></th>';
+
+                tfooter+='<th>Total Amount</th>';
+
+                tfooter+='<th style="text-align:right">'+totalamount+'</th>';
+
+                tfooter+="</tr>";
+
+                tfooter+="</tfoot>";*/
+
+
+
+                console.log(theader+tbody);
+
+                document.getElementById("table").innerHTML=
+
+                    '<table>'+theader+tbody+'</table>';
+
+
+
+
+
+            }       
+
+            function init_table(){
+                table=[];
+                document.getElementById("table").innerHTML="";
+                showtable();
+            }
+
+            function clearTable(){
+                var toclear;
+
+                toclear=confirm("Delete all item(s) from table?");
+
+                if (toclear) {
+                    init_table();
+                }
+            }
+
+            function deleteitem(){
+
+                var todelete;
+
+                var itemno;
+
+                itemno=document.getElementById("delitem").value;
+
+                todelete=confirm("Delete item no. "+itemno+"?");
+
+
+
+                if (todelete) {
+
+                    table.splice(itemno-1,1);
+
+                    //document.getElementById("items").value=table.length;
+
+                    showtable();   
+
+                }
+
+
+
+            }
+    
+            
+
+        </script>
+
+        
+    </body>
+</html>
