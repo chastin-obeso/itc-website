@@ -4,6 +4,10 @@
         <meta http-equiv="refresh" content="3;Conversion/ObesoConversion.html" />
         <style>
             #divmain{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: stretch;
                 display:grid;
                 grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
                 grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 
@@ -13,9 +17,9 @@
                 border: 10px solid var(--clr-dark);
             }
             #background{
+                background-size: cover;
                 background-color: black;
                 background-image: url('Conversion/space.gif'); 
-                background-size: 1515px;
                 grid-column-start: 1;
                 grid-column-end: 20;
                 grid-row-start: 1;
@@ -39,7 +43,7 @@
             
         </style>
     </head>
-    <body style="margin: 0px;">
+    <body style="margin: 0px; background-color: black;">
         
 
         <div id="divmain">

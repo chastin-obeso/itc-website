@@ -4,6 +4,10 @@
         <title>Tax Calculator</title>
         <style>
             #divmain{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: stretch;
                 display:grid;
                 grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
                 grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 
@@ -24,9 +28,10 @@
                 text-align: center;
             }
             #background{
+                background-position: center center;
                 background-color: black;
                 background-image: url('../Images/grid.gif'); 
-                background-size: 1515px;
+                background-size: cover;
                 grid-column-start: 1;
                 grid-column-end: 20;
                 grid-row-start: 1;
@@ -35,8 +40,8 @@
             }
             #background_filter{
                 background-color: black;
-                opacity: 0.3;
-                background-size: 1515px;
+                opacity: 0.2;
+                background-size: cover;
                 grid-column-start: 1;
                 grid-column-end: 20;
                 grid-row-start: 1;
@@ -196,15 +201,15 @@
            
 
     </script>
-    <body style="margin: 0;">
+    <body style="margin: 0; background-color: blueviolet;">
         <div id="divmain">
             <div id="heading" style="z-index: 9999;">
                 INCOME TAX<br>CALCULATOR
             </div>
             <div class = zoom id="go_home_opaque" style="z-index: 99999"><a href="../load_menu.html" style="color: white; text-decoration: none;">Home</a></div>
             <div id="go_home_transparent" style="background-color: black; grid-column-start: 1; grid-column-end: 4;"></div>
-            <div id="background" style="width: 1515px;"></div>
-            <div id="background_filter"></div>
+            <div id="background" style="z-index: -11;"></div>
+            <div id="background_filter" style="z-index: -10;"></div>
             <div id="table" style="z-index: 99999;">
                 
                 <table id="tablee" style="width: fit-content; height: fit-content; padding: 2%; font-family:Font1; color: white; margin-top: 25px;">

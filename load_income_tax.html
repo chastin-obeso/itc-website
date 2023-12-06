@@ -4,6 +4,10 @@
         <meta http-equiv="refresh" content="3;IncomeTaxCalculator/Obeso_IncomeTaxCalculator.html" />
         <style>
             #divmain{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: stretch;
                 display:grid;
                 grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
                 grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 
@@ -15,7 +19,7 @@
             #background{
                 background-color: black;
                 background-image: url('Images/grid.gif'); 
-                background-size: 1515px;
+                background-size: cover;
                 grid-column-start: 1;
                 grid-column-end: 20;
                 grid-row-start: 1;
@@ -39,11 +43,11 @@
             
         </style>
     </head>
-    <body style="margin: 0px;">
+    <body style="margin: 0px; background-color: blueviolet;">
         
 
         <div id="divmain">
-            <div id="background"></div>
+            <div id="background" style="margin: 0; background-color: black;"></div>
             <div id="text">Loading Income Tax...</div>
         </div>
         

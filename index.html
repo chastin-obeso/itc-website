@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Chastin Obeso's Personal Website</title>
         <style>
+            
             #divmain{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+                    align-items: stretch;
                     display:grid;
                     grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
                     grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 
@@ -13,6 +19,9 @@
                     border: 10px solid var(--clr-dark);
                 }
             #background{
+                width: 100%;
+                margin:0;
+                padding: 0;
                 background-color: black;
                 background-image: url('Images/truck.gif'); 
                 background-size: cover;
@@ -128,7 +137,7 @@
         
 
     </head>
-    <body style="width: 100%; margin: 0; padding: 0;">
+    <body style="width: 100%; margin: 0; padding: 0; background-color: black;">
         
         <div id="divmain">
             <div id="background">

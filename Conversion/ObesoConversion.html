@@ -3,6 +3,10 @@
         <head>
             <style>
                 #divmain{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+                    align-items: stretch;
                     display:grid;
                     grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
                     grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 
@@ -12,9 +16,10 @@
                     border: 10px solid var(--clr-dark);
                 }
                 #background{
+                    
                     background-color: black;
                     background-image: url('space.gif'); 
-                    background-size: 1515px;
+                    background-size: cover;
                     grid-column-start: 1;
                     grid-column-end: 20;
                     grid-row-start: 1;
@@ -186,7 +191,7 @@
                 }
             </style>
         </head>
-        <body style="margin: 0px;">
+        <body style="margin: 0px; background-color: black;">
             <script>
                 function convert1(){
                     var outputvalue;
@@ -194,11 +199,11 @@
                     var unit = document.getElementById("unit1").value;
                     if (unit === "fahrenheit") {
                         outputvalue = (inputvalue - 32)/1.8;
-                        return outputvalue ;
+                        return Math.round(outputvalue*100)/100 ;
                     } 
                     else if (unit === "celsius") {
                         outputvalue = (inputvalue * 1.8) + 32;
-                        return outputvalue ;
+                        return Math.round(outputvalue*100)/100 ;
                     }
                 }
 
@@ -208,11 +213,11 @@
                     var unit = document.getElementById("unit2").value;
                     if (unit === "meter") {
                         outputvalue = inputvalue * 3.281;
-                        return outputvalue ;
+                        return Math.round(outputvalue*100)/100 ;
                     } 
                     else if (unit === "feet") {
                         outputvalue = inputvalue / 3.281;
-                        return outputvalue ;
+                        return Math.round(outputvalue*100)/100 ;
                     }
                 }
 
@@ -265,14 +270,13 @@
                     <br>
 
                     <label for="convertinput2" style="font-size: 30px;">Input:</label>
-                    <input id="convertinput2" type="number" style="width: 300px; height: 50px; font-size: 30px; margin-top: 40px; font-family: Font1;"></input>
-                    
-                    
+                    <input id="convertinput2" type="number" style="width: 300px; height: 50px; font-size: 30px; margin-top: 40px; 
+                    font-family: Font1; text-align: right;"></input>
                     
                     <br>
                     <label for="output2" style="font-size: 30px; text-align: left;">Output:</label> 
                     <br>
-                    <output id="output2" style="font-size: 30px; text-align: left;"></output>
+                    <output id="output2" style="font-size: 30px; text-align: right;"></output>
                 </div>
                 <div id="Dist_background"></div>
                 <div id="SubmitDist" style="z-index: 9999999;"><button onclick="updateOutput2()" 
@@ -290,14 +294,15 @@
                     <br>
 
                     <label for="convertinput1" style="font-size: 30px;">Input:</label>
-                    <input id="convertinput1" type="number" style="width: 300px; height: 50px; font-size: 30px; margin-top: 40px; font-family: Font1;"></input>
+                    <input id="convertinput1" type="number" style="width: 300px; height: 50px; font-size: 30px; 
+                    margin-top: 40px; font-family: Font1; text-align: right;"></input>
                     
                     
                     
                     <br>
                     <label for="output1" style="font-size: 30px; text-align: left;">Output:</label> 
                     <br>
-                    <output id="output1" style="font-size: 30px; text-align: left;"></output>
+                    <output id="output1" style="font-size: 30px; text-align: right;"></output>
                 </div>
                 <div id="Temp_background"></div>
                 <div id="SubmitTemp" style="z-index: 9999999;"><button onclick="updateOutput1()" 

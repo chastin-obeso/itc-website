@@ -4,21 +4,26 @@
          <title>SIMPLE PAYROLL CALCULATOR</title>
              <style>
                #divmain{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+                    align-items: stretch;
                     display:grid;
-                    grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 50px;
-                    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 15px;
+                    grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px 50px;
+                    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px px;
                     width: 100%;
                     margin: 10 auto;
                     border: 10px solid var(--clr-dark);
                 }
                 #background{
+                    background-position: center;
                     background-color: black;
                     background-image: url('../Images/sunset.gif'); 
-                    background-size: 1550px;
+                    background-size: cover;
                     grid-column-start: 1;
                     grid-column-end: 20;
                     grid-row-start: 1;
-                    grid-row-end: 20;  
+                    grid-row-end: 25;  
                 
                 }
                 #go_home_transparent{
@@ -161,7 +166,7 @@
                 #secret{
                     margin-top: 50px;
                     grid-column-start: 1;
-                    grid-column-end: 18;
+                    grid-column-end: 20;
                     grid-row-start: 11;
                     grid-row-end: 11;
                     text-align: center;  
@@ -202,7 +207,7 @@
 
                 "gross_pay" : function gross_pay(){
 
-                    return Math.round(this.days_worked*this.daily_rate*100)/100;  
+                    return Math.round(parseFloat(this.days_worked).toFixed(0)*this.daily_rate*100)/100;  
 
                 },
 
@@ -310,19 +315,19 @@
 
                     
 
-                    +'<td>'+ln+' </td>'
+                    +'<td style="padding-right: 30px; padding-top: 15px; max-width: 20px;">'+ln+' </td>'
 
-                    +'<td>'+table[i].name+' </td>'
+                    +'<td style="padding-right: 30px; padding-top: 15px; min-width: 150px; max-width: 200px;">'+table[i].name+' </td>'
 
-                    +'<td>'+table[i].days_worked+'</td>'
+                    +'<td style="padding-right: 30px; padding-top: 15px; text-align: right;">'+ parseFloat(table[i].days_worked).toFixed(0)+'</td>'
 
-                    +'<td>'+table[i].daily_rate+'</td>'
+                    +'<td style="padding-right: 30px; padding-top: 15px; text-align: right;">'+ parseFloat(table[i].daily_rate).toFixed(2)+'</td>'
 
-                    +'<td>'+table[i].gross_pay()+'</td>'  
+                    +'<td style="padding-right: 30px; padding-top: 15px; text-align: right;">'+ parseFloat(table[i].gross_pay()).toFixed(2)+'</td>'  
 
-                    +'<td>'+table[i].deduction_amount+'</td>' 
+                    +'<td style="padding-right: 30px; padding-top: 15px; text-align: right;">'+ parseFloat(table[i].deduction_amount).toFixed(2)+'</td>' 
                     
-                    +'<td>'+table[i].net_pay()+'</td>'
+                    +'<td style="padding-right: 30px; padding-top: 15px; text-align: right;">'+parseFloat(table[i].net_pay()).toFixed(2)+'</td>'
 
                     +"</tr>";
 
@@ -417,7 +422,7 @@
         
 
     </script>
-    <body style="margin: 0;" onload = "init_table()">
+    <body style="margin: 0; background-color: blueviolet;" onload = "init_table()">
         <div id="divmain">
             <div id="background" style="z-index: -11;"></div>
             <div id="heading">Simple Payroll Calculator</div>
@@ -443,13 +448,13 @@
                 <input id = "name" type="search" size="20px" style="font-family: Font1; margin-left: -3px; width: 310px; background-color: black; color: white;" maxlength="30"></input>
                 <br>
                 <label for="days_worked" style=" margin-top: 20px; margin-left: 110px;">Days Worked:</label>
-                <input id = "days_worked" type="number" size="20px" style="margin-top: 20px; font-family: Font1; width: 303px; background-color: black; color: white;" max="99999"></input>
+                <input id = "days_worked" type="number" size="20px" style="margin-top: 20px; font-family: Font1; width: 303px; background-color: black; color: white; text-align: right;" max="99999"></input>
                 <br>
                 <label for="daily_rate" style="margin-left: 132px; margin-top: 20px;">Daily Rate: P</label>
-                <input id = "daily_rate" type="number" size="20px" style="margin-top: 20px; font-family: Font1; background-color: black; color: white;" max="999999999"></input>
+                <input id = "daily_rate" placeholder="0.00" step="0.01" type="number" size="20px" style="margin-top: 20px; font-family: Font1; background-color: black; color: white; text-align: right;" max="999999999"></input>
                 <br>
                 <label for="deduction_amount" style="margin-left: 15px; margin-top: 20px;">Deduction Amount: P</label>
-                <input id = "deduction_amount" type="number" size="20px" style="margin-top: 20px; font-family: Font1; background-color: black; color: white;" max="999999999"></input>
+                <input id = "deduction_amount" placeholder="0.00" step="0.01" type="number" size="20px" style="margin-top: 20px; font-family: Font1; background-color: black; color: white; text-align: right;" max="999999999"></input>
                 
                 </div>
 
@@ -483,6 +488,11 @@
                     </thead>
                 </table>
             </div>
+
+            <div id="secret">
+                <p>Website by Chastin Obeso</p>
+            </div>
+
         </div>
         
         
